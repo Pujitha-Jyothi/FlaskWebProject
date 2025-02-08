@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Study Hour Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="time"], input[type="date"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Post Study Hour Schedule</h2>
+    <form action="{{ url_for('warden_post_schedule') }}" method="POST">
+        <label for="branch_name">Branch:</label>
+        <input type="text" name="branch_name" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" required>
+
+        <label for="faculty">Faculty:</label>
+        <input type="text" name="faculty" required>
+
+        <label for="time">Time:</label>
+        <input type="time" name="time" required>
+
+        <label for="classroom">Classroom:</label>
+        <input type="text" name="classroom" required>
+
+        <label for="study_date">Date:</label>
+        <input type="date" name="study_date" required>
+
+        <button type="submit">Post Schedule</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Study Hours</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #f4f4f4; /* Light background for the body */
+            color: #333; /* Text color */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            padding: 20px; /* Padding around the body */
+        }
+
+        .container {
+            max-width: 800px; /* Set max width for the container */
+            background-color: white; /* White background for the container */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            padding: 20px; /* Padding inside the container */
+            animation: fadeIn 0.5s ease-in; /* Animation for fade-in effect */
+        }
+
+        h1 {
+            text-align: center; /* Center the title */
+            margin-bottom: 20px; /* Space below the title */
+            color: #2c3e50; /* Darker color for title */
+            font-size: 2.5em; /* Large font size for the title */
+        }
+
+        table {
+            width: 100%; /* Full width of the container */
+            margin: 20px 0; /* Margin around the table */
+        }
+
+        th {
+            background-color: #3498db; /* Header background color */
+            color: white; /* Header text color */
+            font-weight: bold; /* Bold font for headers */
+        }
+
+        td {
+            background-color: #fff; /* White background for table cells */
+        }
+
+        td:hover {
+            background-color: #e0f7fa; /* Light blue hover effect for table cells */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> <!-- Centered container -->
+        <h1>Your Study Hours</h1>
+        <table class="table table-bordered table-striped"> <!-- Bootstrap table classes -->
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Faculty</th>
+                    <th>Classroom</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject, faculty, classroom, time, date in study_hours %}
+                <tr>
+                    <td>{{ subject }}</td>
+                    <td>{{ faculty }}</td>
+                    <td>{{ classroom }}</td>
+                    <td>{{ time }}</td>
+                    <td>{{ date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS (optional, for interactive components) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

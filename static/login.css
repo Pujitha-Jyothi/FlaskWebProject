@@ -1,0 +1,104 @@
+/* Include a more attractive font family (from Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Style for the entire body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: url('../static/login1.jpg') no-repeat center center fixed; /* Background image */
+  background-size: cover; /* Cover the entire background */
+  font-family: 'Poppins', sans-serif; /* Change to Poppins font */
+}
+
+/* Style for the header */
+header {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 20px;
+}
+
+header .project-title {
+  font-size: 50px; /* Larger font size for the title */
+  color: #085543;
+  font-weight: 700;
+  text-transform: uppercase; /* Makes the title stand out */
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: 'Lobster', sans-serif;
+}
+
+/* Style for the login container */
+.login-container {
+  width: 500px; /* Width for the login box */
+  padding: 40px; /* Padding for the login box */
+  background-color: rgba(153, 138, 138, 0.8); /* Slightly transparent white background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: 100px; /* Space from the top for better visibility */
+}
+
+/* Style for the heading */
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+}
+
+/* Style for the input groups */
+.input-group {
+  margin-bottom: 20px; /* Space between input fields */
+  text-align: left;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2c2b2b;
+}
+
+/* Style for input fields */
+input {
+  width: 100%;
+  padding: 12px; /* Padding for input fields */
+  margin-bottom: 15px; /* Space below input fields */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Slightly rounded corners */
+  box-sizing: border-box;
+}
+
+/* Style for the button */
+button {
+  width: 100%;
+  padding: 12px; /* Padding for the button */
+  background-color: rgba(40, 83, 41, 0.8); /* Transparent green background */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 18px; /* Font size for button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: rgba(76, 175, 80, 1); /* Darker green on hover */
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+  .login-container {
+      width: 90%; /* Make the login box responsive on small screens */
+  }
+  header .project-title {
+      font-size: 36px; /* Smaller font size for mobile */
+      font-family: 'Lobster', sans-serif;
+  }
+}
+

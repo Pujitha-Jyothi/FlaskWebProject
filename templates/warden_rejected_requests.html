@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejected Requests</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background: linear-gradient(135deg, #abdfc9d2, #ad8989d8);
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            border-radius: 12px;
+            padding: 30px;
+            border: 2px solid #ccc; /* Subtle outer border */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow for container */
+            background-color: #ffffff; /* White background for the container */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #470e0cdf; /* Red color for the title */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for table */
+            border-radius: 8px;
+            overflow: hidden; /* Round the corners of the table */
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            font-weight: 700; /* Bold letters */
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #96211dcc; /* Red background for headers */
+            color: white;
+            position: relative; /* Position relative for pseudo-elements */
+        }
+
+        th::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 5px;
+            background: #871511c7; /* Darker red underline */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        tr {
+            transition: transform 0.2s ease; /* Smooth hover transition */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Light gray background on row hover */
+            transform: translateY(-2px); /* Moving effect on hover */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Slightly different background for rows */
+        }
+
+        @media (max-width: 600px) {
+            th,
+            td {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Rejected Gate Pass Requests</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student ID</th>
+                    <th>Outing Type</th>
+                    <th>Purpose</th>
+                    <th>Outing Time</th>
+                    <th>Expected Return</th>
+                    <th>Rejected By</th> <!-- Updated to reflect the correct field -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ request['id'] }}</td>
+                    <td>{{ request['student_id'] }}</td>
+                    <td>{{ request['outing_type'] }}</td>
+                    <td>{{ request['purpose'] }}</td>
+                    <td>{{ request['outing_time'] }}</td>
+                    <td>{{ request['expected_return'] }}</td>
+                    <td>{{ request['rejected_by'] }}</td> <!-- Updated to reflect the correct field -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

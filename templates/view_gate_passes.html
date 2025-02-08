@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gate Pass Requests</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background:linear-gradient(135deg, #7bbacbdd, #c8f69bd8);/* Light background color */
+            color: #1e1a1a;
+            padding: 20px;
+            font-size: 1.2em;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50; /* Darker title color */
+            font-size: 2.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd; /* Subtle border for table */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            transition: background-color 0.3s; /* Smooth transition on hover */
+        }
+
+        th {
+            background-color: #0e456abc; /* Bright header color */
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f9f9f9; /* Light gray for table rows */
+        }
+
+        td:hover {
+            background-color: #dce8f7; /* Highlight on hover */
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+
+            h1 {
+                font-size: 2em; /* Adjust title size */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>My Gate Pass Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Outing Type</th>
+                <th>Purpose</th>
+                <th>Outing Time</th>
+                <th>Expected Return</th>
+                <th>Actual Return</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gate_pass in passes %}
+            <tr>
+                <td>{{ gate_pass[1] }}</td>
+                <td>{{ gate_pass[2] }}</td>
+                <td>{{ gate_pass[3] }}</td>
+                <td>{{ gate_pass[4] }}</td>
+                <td>{{ gate_pass[5] }}</td>
+                <td>{{ gate_pass[6] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

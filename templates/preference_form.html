@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Veg/Non-Veg Preference</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #b8d5d9a8, #82c3cbaa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #00796b;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            animation: slideIn 1s ease;
+        }
+
+        form {
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: slideUp 1.2s ease forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #312e2e;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1em;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #b0bec5;
+            transition: all 0.3s ease;
+        }
+
+        select {
+            background-color: #f1f8e9;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #00796b;
+            box-shadow: 0 0 5px rgba(0, 121, 107, 0.3);
+        }
+
+        button {
+            background: linear-gradient(45deg, #00796b, #004d40);
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active {
+            transform: scale(1);
+            background: linear-gradient(45deg, #004d40, #00332c);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Submit Veg/Non-Veg Preference</h1>
+        <form action="/submit_preference" method="POST">
+            <input type="hidden" name="roll_number" value="{{ student_roll_number }}">
+            <input type="hidden" name="room_number" value="{{ student_room_number }}">
+            <input type="hidden" name="student_name" value="{{ student_name }}">
+            
+            <label for="preference">Select Veg or Non-Veg for tomorrow's meal</label>
+            <select id="preference" name="preference" required>
+                <option value="Veg">Veg</option>
+                <option value="Non-Veg">Non-Veg</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

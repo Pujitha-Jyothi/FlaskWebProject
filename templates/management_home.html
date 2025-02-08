@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image: url('/static/managehome.jpg'); /* Set your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(116, 109, 109, 0.6); /* Reduced opacity for clearer background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #fff;
+            margin: 0;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgba(141, 110, 110, 0.5); /* Lighter background for clearer image */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: block;
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #4e320d86;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            width: 250px;
+        }
+        .button:hover {
+            background-color: #42290ef9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Management Dashboard</h1>
+    </div>
+    <div class="main-content">
+        <h2>Actions</h2>
+        <a href="/view_feedback" class="button"><i class="fas fa-comments"></i> View Feedback History</a>
+        <a href="/resolved_feedback" class="button"><i class="fas fa-check"></i> View Resolved Feedback</a>
+        <a href="/pending_feedback" class="button"><i class="fas fa-exclamation-circle"></i> View and Respond to Pending Feedback</a>
+        <a href="/change_password" class="button"><i class="fas fa-lock"></i> Change Password</a>
+    </div>
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit" class="button" style="margin-top: 20px;">Logout</button>
+    </form>
+</body>
+</html>

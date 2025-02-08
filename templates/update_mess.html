@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Mess Menu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome for icons -->
+    <style>
+        body {
+            background-color: #e9ecef; /* Light background for the body */
+            color: #343a40; /* Text color */
+            padding: 20px; /* Padding around the body */
+        }
+
+        .container {
+            max-width: 600px; /* Set max width for the container */
+            background-color: #fff; /* White background for the container */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+            padding: 30px; /* Padding inside the container */
+            margin: auto; /* Center container */
+            animation: fadeIn 0.5s ease-in; /* Fade-in animation */
+        }
+
+        h1 {
+            text-align: center; /* Center the title */
+            color: #007bff; /* Bootstrap primary color for title */
+            margin-bottom: 20px; /* Space below the title */
+            font-size: 2.5rem; /* Larger font size */
+        }
+
+        label {
+            font-weight: bold; /* Bold labels for better visibility */
+            margin-top: 10px; /* Space above labels */
+        }
+
+        button {
+            width: 100%; /* Full width button */
+            margin-top: 20px; /* Space above button */
+            transition: background-color 0.3s ease; /* Smooth transition for button */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+
+        textarea {
+            resize: none; /* Disable resizing of the textarea */
+            height: 100px; /* Set height for the textarea */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .form-control:focus {
+            border-color: #007bff; /* Bootstrap primary color for focus state */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow */
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> <!-- Centered container -->
+        <h1><i class="fas fa-utensils"></i> Update Mess Menu</h1>
+        <form action="/update_mess" method="post">
+            <div class="mb-3">
+                <label for="day_of_week" class="form-label">Day of the Week:</label>
+                <select name="day_of_week" id="day_of_week" class="form-select" required>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="meal_type" class="form-label">Meal Type:</label>
+                <select name="meal_type" id="meal_type" class="form-select" required>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="new_menu" class="form-label">New Menu:</label>
+                <textarea name="new_menu" id="new_menu" class="form-control" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Menu <i class="fas fa-check"></i></button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

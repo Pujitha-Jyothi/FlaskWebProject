@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        /* Body and overall styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/feed2.webp'); /* Set your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps the image fixed when scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(161, 147, 147, 0.604); /* Slightly transparent to show the background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0e3f58; /* Darker gray for title */
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Main form container */
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.786);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Form fields styling */
+        label {
+            font-weight: bold;
+            color: #333; /* Slightly dark gray */
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            resize: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #66a3ff; /* Light blue focus color */
+            outline: none;
+        }
+
+        /* Button styling */
+        .button {
+            width: 100%;
+            padding: 12px;
+            color: #fff;
+            background-color: #4CAF50; /* Soft green for submit button */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #3e8e41; /* Slightly darker green on hover */
+        }
+
+        /* View history button styling */
+        .history-button {
+            background-color: #4682B4; /* Steel blue for history button */
+            margin-top: 10px;
+        }
+
+        .history-button:hover {
+            background-color: #315f7e; /* Darker blue on hover */
+        }
+
+        /* Fade-in animation for form */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Feedback Form</h1>
+        
+        <!-- Feedback submission form -->
+        <form method="POST" action="{{ url_for('submit_feedback') }}">
+            <label for="roll_number">Roll Number (optional):</label>
+            <input type="text" id="roll_number" name="roll_number" placeholder="Enter your roll number">
+
+            <label for="feedback_text">Feedback:</label>
+            <textarea id="feedback_text" name="feedback_text" placeholder="Enter your feedback here" required></textarea>
+
+            <label for="category">Category (optional):</label>
+            <input type="text" id="category" name="category" placeholder="Specify a category if any">
+
+            <button type="submit" class="button">Submit</button>
+        </form>
+
+        <!-- View feedback history button -->
+        <form method="GET" action="{{ url_for('student_feedback') }}">
+            <button type="submit" class="button history-button">View Feedback History</button>
+        </form>
+    </div>
+</body>
+</html>

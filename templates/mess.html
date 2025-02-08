@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Schedule</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('/static/canteen-2.png'); /* Set your background image */
+            background-size: cover; /* Cover the whole page */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repetition of the image */
+            margin: 0;
+            padding: 0;
+            color: #333; /* Dark text color for readability */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.1em;
+        }
+        h1 {
+            text-align: center;
+            color: #f8f8f8; /* Light color for contrast */
+            padding: 20px;
+            font-size: 2.5em;
+            margin-top: 20px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8); /* Stronger shadow for readability */
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+            border-radius: 8px; /* Rounded corners for header */
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Light, semi-transparent background */
+            padding: 20px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 1em;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        th {
+            background-color: #2f4f4f; /* Darker header color for contrast */
+            color: #f8f8f8;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(220, 220, 220, 0.6); /* Light gray for even rows */
+        }
+        tr:hover {
+            background-color: rgba(100, 100, 100, 0.3); /* Light gray on hover */
+        }
+        button {
+            background-color: #2f4f4f; /* Dark button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); /* Button shadow */
+        }
+        button:hover {
+            background-color: #1e3b3b; /* Darker shade on hover */
+        }
+        a {
+            text-decoration: none;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            th, td {
+                font-size: 1em;
+                padding: 10px;
+            }
+            button {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mess Schedule</h1>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for day, meals in organized_data.items() %}
+                <tr>
+                    <td>{{ day }}</td>
+                    <td>{{ meals['Breakfast'] }}</td>
+                    <td>{{ meals['Lunch'] }}</td>
+                    <td>{{ meals['Dinner'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Add a link or button to the preference form -->
+        <a href="{{ url_for('preference_form', student_roll_number=student_roll_number, student_room_number=student_room_number) }}">
+            <button>Select Veg/Non-Veg Preference</button>
+        </a>
+    </div>
+</body>
+</html>

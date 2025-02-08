@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #c1f0dcc3, #c3dda9ce);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+         h2 {
+            color: #18735fee;
+            text-align: center;
+        }
+        h1 {
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            padding: 20px;
+            background: linear-gradient(135deg, #c1f0dcc3, #c3dda9ce);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .forms {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+        justify-content: center; /* Centers the forms horizontally */
+        flex-wrap: wrap;
+    }
+
+    .form-box {
+        width: 48%;
+        min-width: 300px;
+        padding: 20px;
+        background-color: #f9fafb;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        margin: 0 auto; /* Centers each form-box within the parent container */
+    }
+
+        .form-box:hover {
+            transform: scale(1.02);
+        }
+        .form-box input, .form-box button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        .form-box button {
+            background-color: #18735fdd;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        .form-box button:hover {
+            background-color: #18735f;
+        }
+        .message {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1em;
+        }
+        .message.success {
+            background-color: #e6fffa;
+            color: #05626a;
+            border: 1px solid #b2f5ea;
+        }
+        .message.error {
+            background-color: #ffe6e6;
+            color: #c53030;
+            border: 1px solid #feb2b2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 1em;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #18735fd4;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        tr:hover {
+            background-color: #e2e8f0;
+        }
+        @media (max-width: 768px) {
+            .forms {
+                flex-direction: column;
+            }
+            .form-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Students</h1>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="forms">
+            <!-- Add Student Form -->
+            <div class="form-box">
+                <h2>Add Student</h2>
+                <form method="POST">
+                    <input type="text" name="student_roll_number" placeholder="Roll Number" required>
+                    <input type="text" name="student_name" placeholder="Name" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="text" name="room_number" placeholder="Room Number">
+                    <input type="text" name="branch_name" placeholder="Branch Name">
+                    <input type="number" name="year" placeholder="Year">
+                    <button type="submit" name="add_student">Add Student</button>
+                </form>
+            </div>
+
+            <!-- Delete Student Form -->
+            <div class="form-box">
+                <h2>Delete Student</h2>
+                <form method="POST">
+                    <input type="text" name="student_roll_number" placeholder="Roll Number" required>
+                    <button type="submit" name="delete_student">Delete Student</button>
+                </form>
+            </div>
+        </div>
+
+        <h2>Current Students</h2>
+        <table>
+            <tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Room Number</th>
+                <th>Branch Name</th>
+                <th>Year</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.student_roll_number }}</td>
+                <td>{{ student.student_name }}</td>
+                <td>{{ student.room_number }}</td>
+                <td>{{ student.branch_name }}</td>
+                <td>{{ student.year }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

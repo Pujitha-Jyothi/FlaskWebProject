@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Gate Pass Requests</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling for body and layout */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #a0c0b3c8, #a8d779df);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 700; /* Bold title */
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500; /* Semi-bold for text */
+            color: #34495e;
+        }
+        th {
+            background-color: #124e76; /* Bold blue for header */
+            color: white;
+            font-weight: 700; /* Bold headers */
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fc;
+        }
+        tr:hover {
+            background-color: #e9eff6;
+        }
+        button {
+            background-color: #27ae60; /* Green button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 700; /* Bold button text */
+        }
+        button:hover {
+            background-color: #219150;
+            transform: scale(1.05);
+        }
+        form {
+            display: inline;
+        }
+        select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-right: 10px;
+        }
+        /* Highlight the label */
+        label {
+            font-weight: 700;
+            color: #555;
+            margin-right: 5px;
+        }
+        /* Styling the reject button separately */
+        .reject-btn {
+            background-color: #e74c3c;
+            font-weight: 700; /* Bold reject button text */
+            margin-left: 10px;
+        }
+        /* Responsive design adjustments */
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Pending Gate Pass Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Outing Type</th>
+                <th>Purpose</th>
+                <th>Outing Time</th>
+                <th>Expected Return</th>
+                <th>Accepted By</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+            <tr>
+                <td><strong>{{ request[1] }}</strong></td>
+                <td><strong>{{ request[2] }}</strong></td>
+                <td><strong>{{ request[3] }}</strong></td>
+                <td><strong>{{ request[4] }}</strong></td>
+                <td><strong>{{ request[5] }}</strong></td>
+                <td><strong>{{ request[6] }}</strong></td>
+                <td>
+                    <!-- Accept form -->
+                    <form action="{{ url_for('warden_accept_request', id=request[0]) }}" method="POST">
+                        <label for="accepted_by">Accepted By:</label>
+                        <select name="accepted_by" id="accepted_by" required>
+                            <option value="Warden">Warden</option>
+                            <option value="Principal">Principal</option>
+                            <option value="Head of Department">Head of Department</option>
+                        </select>
+                        <button type="submit">Accept</button>
+                    </form>
+                    
+                    <!-- Reject form -->
+                    <form action="{{ url_for('warden_reject_request', id=request[0]) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="reject-btn">Reject</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

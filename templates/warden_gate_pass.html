@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gate Pass Approval</title>
+</head>
+<body>
+    <h1>Pending Gate Pass Request</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Student ID</th>
+            <th>Outing Type</th>
+            <th>Purpose</th>
+            <th>Outing Time</th>
+            <th>Expected Return</th>
+            <th>Actions</th>
+        </tr>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request['id'] }}</td>
+            <td>{{ request['student_id'] }}</td>
+            <td>{{ request['outing_type'] }}</td>
+            <td>{{ request['purpose'] }}</td>
+            <td>{{ request['outing_time'] }}</td>
+            <td>{{ request['expected_return'] }}</td>
+            <td>
+                <form action="{{ url_for('warden_gate_pass_approval') }}" method="POST">
+                    <input type="hidden" name="request_id" value="{{ request['id'] }}">
+                    <button type="submit" name="action" value="Accept">Accept</button>
+                    <button type="submit" name="action" value="Reject">Reject</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

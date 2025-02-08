@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Page background */
+        body {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background-image: url('/static/warden.jpg'); /* Path updated */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #4A4A4A; /* Neutral dark gray for text */
+        }
+
+        /* Header styling */
+        .header {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Light, translucent background */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .header h1 {
+            color: #2e4e3f; /* Muted forest green */
+            margin: 0;
+            font-size: 2.4em;
+        }
+
+        /* Main content styling */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgba(250, 250, 250, 0.9); /* Very light, warm beige */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto;
+            animation: slideUp 1s ease-in-out;
+        }
+        h2 {
+            color: #2b442b; /* Soft green */
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button styling */
+        .button {
+            display: block;
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, #68d578, #62b280); /* Soft green gradient */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 250px;
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #5a8f6d, #4b7c5d); /* Darker green on hover */
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+        .button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .button.logout {
+            background: linear-gradient(135deg, #5a8f6d, #4b7c5d) /* Warm earthy red for logout */
+        }
+        .button.logout:hover {
+            background: linear-gradient(135deg, #5a8f6d, #4b7c5d) /* Darker earthy red on hover */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome, {{ warden_name }}!</h1>
+    </div>
+    <div class="main-content">
+        <h2>Actions</h2>
+        <a href="/warden_view_requests" class="button"><i class="fas fa-check-circle"></i> Gate Pass Approvals</a>
+        <a href="/warden_mess" class="button"><i class="fas fa-utensils"></i> Mess Module</a>
+        <a href="/add_study_hour" class="button"><i class="fas fa-book"></i> Study Hours</a>
+        <a href="/manage_students" class="button"><i class="fas fa-user-graduate"></i> Manage Students</a>
+        <a href="/accepted_requests" class="button"><i class="fas fa-check"></i> View Accepted Requests</a>
+        <a href="/rejected_requests" class="button"><i class="fas fa-times"></i> View Rejected Requests</a>
+        <a href="/change_password" class="button"><i class="fas fa-lock"></i> Change Password</a>
+    </div>
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit" class="button logout" style="margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </form>
+</body>
+</html>

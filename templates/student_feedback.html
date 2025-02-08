@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback History</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #abdfc9de, #96c06ccf);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+            padding: 30px;
+            overflow-x: auto; /* Horizontal scroll for small screens */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #080c10;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1em;
+            min-width: 600px; /* Minimum width to avoid table shrinking */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        td {
+            background-color: #ffffff;
+            color: #2c3e50;
+            border-bottom: 1px solid #ddd; /* Subtle border between rows */
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f8f9fa; /* Slightly alternate row color */
+        }
+
+        td:hover {
+            background-color: #eaf6ff; /* Hover effect on cells */
+        }
+
+        /* Style for "No response yet" and status cells */
+        .no-response {
+            color: #e74c3c; /* Red color for 'No response yet' */
+            font-weight: bold;
+        }
+
+        .status-pending {
+            color: #f39c12; /* Orange for pending */
+            font-weight: bold;
+        }
+
+        .status-resolved {
+            color: #27ae60; /* Green for resolved */
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Feedback History</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Roll Number</th>
+                    <th>Feedback</th>
+                    <th>Category</th>
+                    <th>Response</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for feedback in feedbacks %}
+                <tr>
+                    <td>{{ feedback.id }}</td>
+                    <td>{{ feedback.roll_number or 'Anonymous' }}</td>
+                    <td>{{ feedback.feedback_text }}</td>
+                    <td>{{ feedback.category }}</td>
+                    <td class="{{ 'no-response' if not feedback.response }}">{{ feedback.response or 'No response yet' }}</td>
+                    <td class="{{ 'status-pending' if feedback.status == 'Pending' else 'status-resolved' }}">{{ feedback.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate Pass Approved</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styling for body and layout */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #eaf3fa;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #2d3436;
+        }
+        
+        /* Center container with animation */
+        .container {
+            max-width: 700px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(10, 7, 7, 0.2);
+
+            text-align: center;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: fadeInMove 1s ease-out forwards;
+        }
+
+        /* Keyframes for fade-in and move-down effect */
+        @keyframes fadeInMove {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Heading styling */
+        h3 {
+            color: #0f3d22b8; /* Vibrant green for approval message */
+            font-size: 40px;
+            font-weight: 700; /* Bold heading */
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        /* Paragraph styling */
+        p {
+            font-size: 20px;
+            color: #444;
+            margin: 15px 0;
+            font-weight: 500; /* Semi-bold for clarity */
+        }
+
+        /* Button styling */
+        a {
+            display: inline-block;
+            margin: 15px;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: 700; /* Bold text for buttons */
+            text-decoration: none;
+            color: white;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        /* Download buttons */
+        .download-btn {
+            background-color: #138254; /* Blue for download buttons */
+        }
+
+        .download-btn:hover {
+            background-color: #155339; /* Darker blue on hover */
+            transform: scale(1.05);
+        }
+
+        /* Back link styling */
+        .back-link {
+            background-color: #c17b0ac5; /* Orange for back button */
+        }
+
+        .back-link:hover {
+            background-color: #e67e22; /* Darker orange on hover */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Gate Pass Approved!</h3>
+        <p>Your gate pass has been successfully approved.</p>
+        <p>
+            <a href="{{ url_for('download_pdf', file=exit_filename) }}" class="download-btn">Download Exit Slip</a>
+            <a href="{{ url_for('download_pdf', file=entry_filename) }}" class="download-btn">Download Entry Slip</a>
+        </p>
+        <p>
+            <a href="{{ url_for('warden_view_requests') }}" class="back-link">Back to Requests</a>
+        </p>
+    </div>
+</body>
+</html>

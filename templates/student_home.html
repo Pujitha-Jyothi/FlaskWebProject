@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('/static/studenth.webp'); /* Use your image path here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #3d2f2f; /* Soft dark color for text */
+        }
+        .quote {
+            margin-top: 20px;
+            font-size: 1.8em;
+            color: #805a43;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header {
+            margin-top: 10px;
+            padding: 15px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .header h1 {
+            color: #3d2f2f;
+            margin: 0;
+            font-weight: bold;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .button {
+            display: block;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 1.2em;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #8a6241; /* Warm, earthy color for buttons */
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .button:hover {
+           /* Darker on hover */
+            background-color: #b9855e;
+            transform: translateY(-2px);
+        }
+        .button:active {
+            transform: translateY(1px);
+        }
+        h2 {
+            font-weight: bold;
+            font-size: 1.8em;
+            color: #3d2f2f;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .logout-button {
+            background-color: #805a43;
+            color: #fff;
+            padding: 10px;
+            font-size: 1em;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .logout-button:hover {
+            background-color: #624431;
+            transform: translateY(-2px);
+        }
+        .logout-button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="quote">A place to learn, grow, and create lasting connections</div>
+    <div class="header">
+        <h1>Welcome, {{ student_name }}!</h1>
+    </div>
+    <div class="main-content">
+        <h2>Actions</h2>
+        <div class="button-container">
+            <a href="/mess" class="button"><i class="fas fa-utensils"></i> Mess</a>
+            <a href="/request_gate_pass" class="button"><i class="fas fa-door-open"></i> Gate Pass</a>
+            <a href="/student_study_hours" class="button"><i class="fas fa-book"></i> Study Hours</a>
+            <a href="/feedback_form" class="button"><i class="fas fa-pencil-alt"></i> Feedback and Suggestions</a>
+            <a href="/change_password" class="button"><i class="fas fa-lock"></i> Change Password</a>
+        </div>
+    </div>
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Study Hour</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styling */
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #e1f5fe);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 700;
+            color: #022216a7;
+            margin-bottom: 25px;
+            font-size: 2em;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #091209;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #0e0a0a;
+        }
+
+        .form-control {
+            border: 2px solid #171111;
+            padding: 12px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .form-control:focus {
+            border-color: #418446;
+            box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            font-weight: 700;
+            background-color: #072c21ac;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        select:hover,
+        input[type="text"]:hover,
+        input[type="time"]:hover,
+        input[type="date"]:hover {
+            border-color: #27835175;
+            background-color: #e8f5e9;
+            color: #110a0a;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .form-control {
+                padding: 10px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Add Study Hour Schedule</h2>
+        <form action="{{ url_for('add_study_hour') }}" method="POST">
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <select id="branch" name="branch" class="form-control" required>
+                    <option value="">Select Branch</option>
+                    <option value="CSE">CSE</option>
+                    <option value="CAI">CAI</option>
+                    <option value="ECE">ECE</option>
+                    <!-- Add more branches as needed -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="year">Year</label>
+                <select id="year" name="year" class="form-control" required>
+                    <option value="">Select Year</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="faculty">Faculty</label>
+                <input type="text" id="faculty" name="faculty" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="classroom">Classroom</label>
+                <input type="text" id="classroom" name="classroom" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" id="time" name="time" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+
+            <button type="submit">Add Schedule</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
