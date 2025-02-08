@@ -11,16 +11,9 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session management
 
 
-import mysql.connector
 
-'''def get_db_connection():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",  # Replace with your MySQL username
-        password="Puji@2004",  # Replace with your MySQL password
-        database="firstdb"
-    )
-'''
+
+
 
 
 
