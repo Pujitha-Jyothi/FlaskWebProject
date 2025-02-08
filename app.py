@@ -27,8 +27,8 @@ import mysql.connector
 # Database connection
 db = mysql.connector.connect(
     host="localhost",
-    user="root",  # Replace with your MySQL username
-    password="Puji@2004",  # Replace with your MySQL password
+    user="root",  
+    password="Puji@2004",  
     database="firstdb"
 )
 
@@ -73,7 +73,7 @@ def login():
             return redirect(url_for('management_home'))
         
         cursor.close()
-        return "Invalid credentials, please try again."
+        return "Invalid credentials, Please try again."
 
     return render_template('login.html')
 
@@ -324,7 +324,7 @@ def submit_feedback():
     
     cursor = db.cursor()
     
-    # Insert feedback into the database
+    # Insert-ing feedback into the database
     query = "INSERT INTO feedback (feedback_text, roll_number, category, status) VALUES (%s, %s, %s, %s)"
     cursor.execute(query, (feedback_text, roll_number if roll_number else None, category, 'Pending'))
     
@@ -360,7 +360,9 @@ def student_feedback():
     return render_template('student_feedback.html', feedbacks=feedbacks, roll_number=student_roll_number)
 
 
+
 #management side logic....
+
 # Route to display all feedback history (no actions allowed)
 @app.route('/view_feedback', methods=['GET'])
 def view_feedback():
@@ -408,7 +410,7 @@ def pending_feedback():
 def respond_pending_feedback():
     feedback_id = request.form.get('feedback_id')  # Feedback ID to identify which feedback to update
     response = request.form.get('response')  # Management's response
-    status = request.form.get('status')  # New status (e.g., 'Resolved')
+    status = request.form.get('status')  # New status (e.g., 'Resolved') like that
 
     cursor = db.cursor()
 
