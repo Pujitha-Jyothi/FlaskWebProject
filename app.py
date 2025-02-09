@@ -7,6 +7,11 @@ from reportlab.pdfgen import canvas
 import os
 from flask import send_file
 
+
+
+#good with numbers but not with Vasavi@123
+from werkzeug.security import check_password_hash, generate_password_hash
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session management
 
@@ -234,15 +239,9 @@ def clear_preferences():
     return redirect(url_for('warden_preferences'))
 
 
+#imports dragged to top...
 
 
-
-#good with numbers but not with Vasavi@123
-from flask import session, request, redirect, url_for, flash, render_template
-from werkzeug.security import check_password_hash, generate_password_hash
-
-from flask import session, request, redirect, url_for, flash, render_template
-from werkzeug.security import check_password_hash, generate_password_hash
 
 @app.route('/change_password', methods=['GET', 'POST'])
 def change_password():
